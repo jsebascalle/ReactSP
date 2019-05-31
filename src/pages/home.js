@@ -3,9 +3,9 @@ import {indigo} from '@material-ui/core/colors';
 import { TransitionGroup } from 'react-transition-group';
 import Button from '@material-ui/core/Button';
 
-import Title from '../components/title';
-import Benefits from '../components/benefits';
-import PlaceCard from '../components/places/placeCard';
+import Title from '../components/Title';
+import Benefits from '../components/Benefits';
+import PlaceCard from '../components/places/PlaceCard';
 
 
 import data from '../request/places';

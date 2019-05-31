@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 
 import './App.css';
-import Home from './pages/home';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import CSSTransition from 'react-transition-group/CSSTransition'
+import { withRouter } from 'react-router-dom';
+
+import MyAppBar from './components/navigation/MyAppBar';
+
 
 class App extends Component{
   constructor(props){
@@ -11,7 +16,14 @@ class App extends Component{
   render(){
     return (
       <section>
-        <Home />
+        <div>
+          <MyAppBar goHome={this.goHome} />
+          <TransitionGroup >
+            <CSSTransition classNames='left-out' timeout={300} >
+              {this.props.children}
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
       </section>
     )
   };
