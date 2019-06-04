@@ -7,7 +7,7 @@ import Title from '../components/Title';
 import Benefits from '../components/Benefits';
 import PlaceCard from '../components/places/PlaceCard';
 
-import data from '../request/places';
+import getPlaces from '../requests/places';
 
 export default class Home extends React.Component {
 
@@ -15,7 +15,7 @@ export default class Home extends React.Component {
       super(props);
 
       this.state = {
-        places : data.places
+        places : getPlaces.places
       }
 
       this.hidePlace = this.hidePlace.bind(this);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'material-ui/Card';
+import Card from '@material-ui/core/Card';
 import { withRouter } from 'react-router-dom';
 
 import { getPlace } from '../requests/places';

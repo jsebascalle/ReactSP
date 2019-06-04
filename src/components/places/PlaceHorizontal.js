@@ -32,7 +32,7 @@ export default class PlaceHorizontal extends React.Component{
                     <IconButton aria-label="Add to favorites">
                       <FavoriteIcon />
                     </IconButton>
-                    <Button variant="text" color="secondary">
+                    <Button variant="text" href={"/lugares/"+this.props.place.slug} color="secondary">
                       Leer más
                     </Button>
                     <Button variant="text" color="primary" onClick={()=> this.props.onRemove(this.props.place)}>

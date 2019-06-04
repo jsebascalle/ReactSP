@@ -28,7 +28,7 @@ export default class PlaceCard extends React.Component {
             title={this.props.place.title}
           />
           <CardMedia
-            image={process.env.PUBLIC_URL + this.props.place.imageUrl}
+            image={process.env.PUBLIC_URL + this.props.place.avatarImage}
             title={this.props.place.title}
             style={{paddingTop: '56.25%'}}
           />

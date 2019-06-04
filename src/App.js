@@ -13,17 +13,11 @@ import MyAppBar from './components/navigation/MyAppBar';
 class App extends Component{
   constructor(props){
       super(props);
-      this.goHome = this.goHome.bind(this);
   }
-
-  goHome(){
-    this.props.history.push('/');
-  }
-
   render(){
     return (
       <section>
-        <MyAppBar />
+        <MyAppBar/>
         <TransitionGroup >
             <CSSTransition classNames='left-out' timeout={300} key={this.props.location.pathname.split('/')[1]}>
               {this.props.children}

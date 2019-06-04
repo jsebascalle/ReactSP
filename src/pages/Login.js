@@ -4,6 +4,7 @@ import Title from '../components/Title';
 import Container from '../components/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { login, signUp } from '../requests/auth';
 
 import {
   BrowserRouter as ReactRouter,
@@ -16,7 +17,38 @@ export default class Login extends React.Component{
   constructor(props){
     super(props);
 
+    this.state = {
+      email: '',
+      password: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.requestAuth = this.requestAuth.bind(this);
+    this.createAccount = this.createAccount.bind(this);
   }
+
+  handleChange(event) {
+    this.setState({ [event.target.name] : event.target.value});
+  }
+
+  requestAuth(){
+    const credentials = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+  
+    login(credentials).then(console.log).catch(console.log);
+  }
+
+  createAccount(){
+    const credentials = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+
+    signUp(credentials).then(console.log).catch(console.log);
+  }
+
 
   render(){
     return(
@@ -33,6 +65,9 @@ export default class Login extends React.Component{
               variant="outlined"
               type="email"
               className="textfield"
+              ref="emailField"
+              name="email"
+              onChange={this.handleChange}
             />
             <TextField
               placeholder="Contraseña"
@@ -41,10 +76,13 @@ export default class Login extends React.Component{
               margin="normal"
               variant="outlined"
               fullWidth
+              ref="passwordField"
+              name="password"
+              onChange={this.handleChange}
             />
 
             <div className="Login-actions">
-        
+
               <Route path="/login" exact render={()=>{
                     return(
                       <div>

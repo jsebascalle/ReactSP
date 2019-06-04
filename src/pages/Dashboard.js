@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-import data from '../request/places';
+import {getPlaces} from '../requests/places';
 import PlaceHorizontal from '../components/places/PlaceHorizontal';
 
 export default class Dashboard extends React.Component{
@@ -14,11 +14,22 @@ export default class Dashboard extends React.Component{
     super(props);
 
     this.state = {
-      places : data.places
+      places : []
     }
 
     this.hidePlace = this.hidePlace.bind(this);
+
+    this.loadPlaces();
   }
+
+
+  loadPlaces(){
+     getPlaces().then(jsonR=>{
+       this.setState({
+         places: jsonR.docs
+       })
+     })
+   }
 
   places(){
     return this.state.places.map((place,index)=>{
