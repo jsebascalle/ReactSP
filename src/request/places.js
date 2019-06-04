@@ -6,12 +6,12 @@ export default {
       description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
     },
     {
-      imageUrl: '/images/1.jpeg',
+      imageUrl: '/images/1.jpg',
       title: 'Starbucks Norte',
       description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
     },
     {
-      imageUrl: '/images/2.jpg',
+      imageUrl: '/images/4.jpg',
       title: 'Pizza de amor',
       description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
     }

@@ -8,24 +8,22 @@ import {
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-//import Dashboard from './pages/Dashboard';
-//import Place from './pages/Place';
+import Dashboard from './pages/Dashboard';
 import App from './App';
 
-//const userSignedIn = false;
+const userSignedIn = false;
 
 export default class Router extends React.Component{
-
-  /*signedInRoutes(){
+  signedInRoutes(){
     if(userSignedIn){
       return(
         <Route path="/new" render={()=><h1>Bienvenido</h1>} />
       );
     }
-  }*/
+  }
 
   home(){
-    //if(userSignedIn) return Dashboard;
+    if(userSignedIn) return Dashboard;
 
     return Home;
   }
@@ -35,9 +33,10 @@ export default class Router extends React.Component{
       <ReactRouter>
         <App>
           <Switch>
-            <Route exact path="/" component={this.home()}></Route>
-            <Route path="/login" component={Login}></Route>
-            /*this.signedInRoutes()}*/
+          <Route exact path="/" component={this.home()}></Route>
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Login} />
+          {this.signedInRoutes()}
           </Switch>
         </App>
       </ReactRouter>

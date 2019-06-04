@@ -21,7 +21,6 @@ class Place extends React.Component{
 
   loadPlace(slug){
     getPlace(slug).then(json=>{
-      console.log(json);
 
       this.setState({
         place: json

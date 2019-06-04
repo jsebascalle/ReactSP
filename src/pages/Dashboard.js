@@ -1,15 +1,12 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Link } from 'react-router-dom';
-
-import {getPlaces} from '../request/places';
-
 import Container from '../components/Container';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+import data from '../request/places';
 import PlaceHorizontal from '../components/places/PlaceHorizontal';
-
-
 
 export default class Dashboard extends React.Component{
 
@@ -17,47 +14,44 @@ export default class Dashboard extends React.Component{
     super(props);
 
     this.state = {
-      places: []
+      places : data.places
     }
 
-    this.loadPlaces()
-
-  }
-
-  loadPlaces(){
-    getPlaces().then(jsonR=>{
-      console.log(jsonR);
-      this.setState({
-        places: jsonR.docs
-      })
-    })
+    this.hidePlace = this.hidePlace.bind(this);
   }
 
   places(){
     return this.state.places.map((place,index)=>{
-      return <PlaceHorizontal place={place} />
+      return(
+        <PlaceHorizontal onRemove={this.hidePlace} place={place} key={index} />
+      );
+    })
+  }
+
+
+  hidePlace(place){
+    this.setState({
+      places: this.state.places.filter(el => el !== place)
     })
   }
 
   render(){
     return(
       <div>
-        <Link to='/new'>
-          <FloatingActionButton
-            className="FAB"
-            secondary={true}>
-              <ContentAdd />
-          </FloatingActionButton>
-        </Link>
+      <Link to='/new' className="FAB" >
+        <Fab color="secondary" aria-label="Add">
+         <AddIcon />
+       </Fab>
+       </Link>
         <Container>
           <div className="row">
             <div className="col-xs-12 col-md-2" style={{'textAlign':'left'}}>
-              <FlatButton label="Explorar" />
-              <FlatButton label="Favoritos" />
-              <FlatButton label="Visitas Previas" />
+              <Button>Explorar</Button>
+              <Button>Favoritos</Button>
+              <Button>Visitas Previas</Button>
             </div>
             <div className="col-xs-12 col-md-10">
-              {this.places()}
+                {this.places()}
             </div>
           </div>
         </Container>
