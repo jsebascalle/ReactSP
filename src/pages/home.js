@@ -2,23 +2,31 @@ import React from 'react';
 import {indigo} from '@material-ui/core/colors';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 import Title from '../components/Title';
 import Benefits from '../components/Benefits';
 import PlaceCard from '../components/places/PlaceCard';
-
 import getPlaces from '../requests/places';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
   constructor(props){
-      super(props);
+    super(props);
 
-      this.state = {
-        places : getPlaces.places
-      }
+    this.state = {
+      places: getPlaces.places
+    }
 
-      this.hidePlace = this.hidePlace.bind(this);
+    console.log(this.props.places);
+
+    this.hidePlace = this.hidePlace.bind(this);
+  }
+
+  loadPlaces(){
+    getPlaces().then(jsonR=>{
+      const places = jsonR.docs;
+    })
   }
 
   places(){
@@ -29,12 +37,12 @@ export default class Home extends React.Component {
     })
   }
 
-
   hidePlace(place){
     this.setState({
-      places: this.state.places.filter(el => el !== place)
+      places: this.state.places.filter(el => el != place)
     })
   }
+
 
   render() {
     return (
@@ -59,3 +67,11 @@ export default class Home extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state,ownProps){
+  return {
+    places: state.places
+  }
+}
+
+export default connect(mapStateToProps)(Home);

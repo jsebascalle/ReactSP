@@ -21,8 +21,9 @@ export default class PlaceCard extends React.Component {
       <CSSTransition
         in={this.props.in}
         timeout={300}
-        classNames="card-place">
-      <div className="col-xs-12 col-sm-4 card-place" key={this.props.index}>
+        classNames="card-place"
+        key={this.props.index}>
+      <div className="col-xs-12 col-sm-4 card-place" >
         <Card >
           <CardHeader
             title={this.props.place.title}

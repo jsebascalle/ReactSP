@@ -7,7 +7,7 @@ import './App.css';
 
 import { withRouter } from 'react-router-dom';
 
-import MyAppBar from './components/navigation/MyAppBar';
+import Navigation from './components/navigation/Navigation';
 
 
 class App extends Component{
@@ -17,7 +17,7 @@ class App extends Component{
   render(){
     return (
       <section>
-        <MyAppBar/>
+        <Navigation/>
         <TransitionGroup >
             <CSSTransition classNames='left-out' timeout={300} key={this.props.location.pathname.split('/')[1]}>
               {this.props.children}
