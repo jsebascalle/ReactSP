@@ -10,7 +10,8 @@ import * as actions  from '../actions/userActions';
 
 import {
   Link,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 
 class Login extends React.Component{
@@ -53,7 +54,7 @@ class Login extends React.Component{
   auth(data){
     this.props.dispatch(actions.login(data.jwt));
     this.props.dispatch(actions.loadUser(data.user));
-
+    
   }
 
 
